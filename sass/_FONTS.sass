@@ -1,2 +1,16 @@
-$heading-font: 'Comics Sans MS', sans-serif
-$body-font: 'Comics Sans MS', sans-serif
+// FONT IMPORTS
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+@import 'queries'
+
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif
+$normal-size: 1rem
+$mobile-size: 0.7rem
+
+html
+    font-size: $normal-size
+
+    // smaller font size on mobile
+    // @include screen-max(940px)
+    //     font-size: $mobile-size
+

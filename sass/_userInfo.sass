@@ -13,18 +13,11 @@
     div
         align-self: center
     
-    // .avatar
-    //     position: relative
-
-    //     .avatar-frame
-    //         position: absolute
-    //         left: -15px
-    //         top: -15px
     
 
-    // !!MOBILE: Taking up almost all the width
+    // !!MOBILE: More width and re-arrange layout
     @include screen-max(940px)
-        font-size: 0.7rem                   // smaler font size
+        font-size: $mobile-size             // smaler font size
         width: 90%                          // mobile margin
 
         display: grid                       // switching from flex to an explicit grid
@@ -34,7 +27,7 @@
         grid-template-rows: 2fr 1fr         // three info elements at the bottom
 
         .avatar img
-            max-height: 128px
+            max-height: 128px               // smaller avatar image
 
         
         // avatar | avatar   | username

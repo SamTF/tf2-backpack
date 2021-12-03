@@ -153,9 +153,10 @@
 		<ItemTooltip {show} bind:this={tooltipComponent} position={mousePosition}/>
 	</div>
 	{/if}
-
-	<p><strong>made by Sam :)</strong></p>
 </main>
+<footer>
+	<p>made by Sam :)</p>
+</footer>
 
 
 <!-- CSS -->

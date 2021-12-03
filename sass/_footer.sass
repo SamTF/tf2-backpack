@@ -1,0 +1,21 @@
+footer
+    // Size
+    width: 100vw
+    height: 2.5vh
+
+    // Centered display
+    display: grid
+    place-items: center
+
+    // Position: fixed at the bottom of the screen no matter what
+    position: fixed
+    bottom: 0
+
+    // Design
+    background-color: $darker-bg
+    font-weight: 700
+    font-stretch: expanded
+
+    // !!MOBILE: Smaller font size
+    @include screen-max(940px)
+        font-size: 0.7rem
