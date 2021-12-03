@@ -1,0 +1,22 @@
+.helper-msg
+    margin: 2rem
+    
+    img
+        margin: 2rem
+
+    // !! MOBILE LAYOUT !!
+    @include screen-max(940px)
+        // Centering all items
+        display: grid
+        place-items: center
+
+        // Smaller font size
+        font-size: 0.7rem
+
+        // Make sure the image doesn't overflow
+        img
+            width: 90%
+
+        // Adding margin between the text lines
+        h2
+            margin-bottom: 1rem

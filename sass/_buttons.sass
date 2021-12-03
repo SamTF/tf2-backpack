@@ -1,0 +1,39 @@
+$padding-y: 8px        // vertical padding
+$padding-x: 20px        // horizontal padding
+$outline-offset: 4px    // distance between outline and border
+    
+button
+    // Box Design
+    padding: $padding-y $padding-x
+    background-color: $item-border-colour
+
+    // Border
+    border: none
+    border-radius: 10px
+    outline-offset: 0px
+
+    // Text
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif
+    color: $background-colour
+    font-weight: 700
+    font-size: 1.1rem
+    // text-transform: uppercase
+
+    // Cursor
+    cursor: pointer
+    
+    // Animation
+    transition: all 100ms
+
+    // Mouse over
+    &:hover
+        outline: 2px dashed white
+        outline-offset: $outline-offset
+        padding: ($padding-y) ($padding-x * 1.5)
+    
+    // Clicking
+    &:active
+        background-color: lighten($item-border-colour, 25%)
+        outline-offset: $outline-offset * 2
+
+        transition: all 0ms

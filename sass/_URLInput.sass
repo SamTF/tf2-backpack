@@ -1,0 +1,57 @@
+// The top-most area where people can enter a steam profile URL
+    
+.user-url-input
+    // Flex Display
+    display: flex
+    flex-wrap: wrap // pushes items onto new line if there's not enough space
+    gap: 1.5rem
+
+    // Size
+    margin-bottom: 2rem
+    width: 59%
+
+    // !!MOBILE: Centering items
+    @include screen-max(940px)
+        justify-content: center
+
+
+    // Fetch Backpack button
+    button
+        align-self: center
+        margin-left: auto   // same as doing justify: end on Grid
+
+        // !!MOBILE: Centering button
+        @include screen-max(940px)
+            margin: auto    // centering the button
+    
+
+    // URL Text Input
+    .profile-url
+        display: flex
+        gap: 6px
+
+        border-radius: 2px
+        outline: 2px solid $item-border-colour
+        outline-offset: 8px
+
+        input
+            background: none
+            border: none
+
+            color: $text-colour
+            font-size: 1.5rem
+            font-weight: 700
+
+            // !!MOBILE: Centering text
+            @include screen-max(940px)
+                text-align: center
+        
+        h2
+            align-self: center
+            color: darken($text-colour, 25%)
+            color: transparentize($text-colour, 0.5)
+            font-weight: normal
+
+            // !! MOBILE LAYOUT !!
+            @include screen-max(940px)
+                display: none

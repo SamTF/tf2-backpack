@@ -1,0 +1,26 @@
+.tooltip
+    // Position & Size
+    position: absolute
+    width: 34vw                     // one third of the view width
+    height: fit-content
+    transform: translate(-50%, 0)   // anchoring the position at the center
+
+    // Centering children
+    display: grid
+    place-items: center
+    text-align: center
+
+    // Design
+    border-radious: 15px
+    background-color: $tooltip-background
+    padding: 2rem 0
+
+    // P tags
+    p
+        margin: 0 2rem
+        color: $text-colour
+
+
+// Doesn't render the tooltip when it's not needed
+.hidden
+    display: none

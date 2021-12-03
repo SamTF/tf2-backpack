@@ -1,0 +1,62 @@
+// Container for all the input elements
+.toolbar
+    // grid display
+    width: 59%
+    display: grid
+    grid-template-columns: 1fr 2fr
+
+    // margins
+    margin-bottom: 2rem
+
+    // !! MOBILE LAYOUT !!
+    @include screen-max(940px)
+        width: 90%
+
+        // One item per row, instead of both items in a row
+        grid-template-columns: 1fr
+        grid-template-rows: 1fr 1fr
+        gap: 2rem
+
+    
+    // The URL Search Field
+    .search
+        position: relative
+        justify-self: end
+
+        // !! MOBILE LAYOUT !!
+        @include screen-max(940px)
+            justify-self: center
+
+        // HTML Text Input box
+        input
+            // justify-self: center
+            color: $text-colour
+            font-size: 1.5rem
+            padding: 0rem 1rem
+
+            background-color: #0000005b
+            border: 2px solid $item-border-colour
+            border-radius: 15px
+
+            width: 250px
+
+            // Enlarges the input field and text on focus ONLY if window is at least 1920px
+            &:focus
+                @include screen-min(1920px)
+                    font-size: 2rem
+                    width: 500px
+                    padding: 1rem
+
+        .clear
+            position: absolute
+            top: 1px
+            right: 4px
+
+            cursor: pointer
+
+    // Class icons that filter items to selected classes only
+    .class-filters        
+        display: grid
+        place-items: center
+        grid-template-columns: repeat(9, 1fr)
+            

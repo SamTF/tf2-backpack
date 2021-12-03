@@ -1,0 +1,57 @@
+// The flex grid containing all the items
+.item-grid
+    // Flex centered display
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+    // Item spacing
+    row-gap: 0.65rem
+    column-gap: 0.75rem
+    
+    // Size
+    width: 65%
+    margin-top: 2rem
+    margin-bottom: 25rem // needs huge bottom margin for displaying the tooltip on the final row of items
+
+    // !!MOBILE: Taking up almost all the width
+    @include screen-max(940px)
+        width: 90%
+
+        font-size: 0.7rem
+
+
+// Each individual item
+.item
+    text-align: center
+    border-radius: 15px
+    border: 3px solid transparent
+    width: 156px
+    height: 120px
+
+    position: relative
+
+    // Centerting the child img
+    display: flex
+    justify-content: center
+    align-items: center
+
+    // Animation transitions
+    transition: all 2000ms ease-in-out
+
+    @include screen-max(940px)
+        // Smaller item box size to fit more on the smaller screen
+        width: 78px
+        height: 60px
+
+        // faster transitions because they don't matter as much on mobile
+        transition: all 500ms
+
+        // ensuring the item image fits in the smaller box
+        img
+            width: 100%
+
+    &:hover
+        // border-color: $item-border-colour
+        border-width: 6px
+        transition: all 200ms ease-in-out
