@@ -22,10 +22,6 @@ UPDATE_PERIOD       = 86400     # 24h in seconds
 
 
 ### FUNCTIONS #########
-def get_api_key() -> str:
-    with open(KEY_FILE, 'r') as f:
-        return f.read()
-
 def f(item: dict) -> dict:
     '''
     Takes a TF2 Item Object and extracts only the relevant info. Returns a dict.
@@ -110,7 +106,8 @@ def fetch_steamid64(vanityurl: str):
         return steamid64
     
     else:
-        raise Exception(f'No user found with URL /{vanityurl}')
+        print(f"No Steam user found with URL: {vanityurl}")
+        return False
 
 
 def fetch_steam_profile(steamid64: int):
@@ -153,7 +150,8 @@ def fetch_playtime(steamid: int) -> int:
 
     # In case we can't find TF2 in the Steam User's game stats
     if 'games' not in data['response']:
-        raise Exception("User has never played TF2 or profile is private.")
+        print(f'User {steamid} has never played TF2 or profile is private.')
+        return False
 
     minutes_played  = data['response']['games'][0]['playtime_forever']
     hours_played    = round(minutes_played / 60)
@@ -220,21 +218,20 @@ def get_backpack2(steam_URL: str):
 
     # STEP 1
     valid, msg = validate_steamid(steam_URL)
-    try:    steamid = steam_URL if valid else fetch_steamid64(steam_URL)
-    except: return {'success': False, 'msg': 'No user found with that URL'}
-
-    print(steamid)
+    steamid = steam_URL if valid else fetch_steamid64(steam_URL)
+    if not steamid:
+        return {'success': False, 'msg': 'No user found with that URL'}
 
     # STEP 2
-    local_data  = load_local_data(steamid)
+    local_data = load_local_data(steamid)
     if local_data:
         return local_data
     
     # STEP 3
-    profile             = fetch_steam_profile(steamid)
-
-    try:                playtime = fetch_playtime(steamid)
-    except:             return {'success': False, 'msg': 'User has never played TF2 or profile is private'}
+    profile = fetch_steam_profile(steamid)
+    playtime = fetch_playtime(steamid)
+    if not playtime:
+        return {'success': False, 'msg': 'User has never played TF2, or profile is private'}
 
     items, item_count   = fetch_items_by_id(steamid)
     hash256             = get_hash(items)
@@ -261,9 +258,12 @@ def get_backpack2(steam_URL: str):
     return backpack
 
 
-# Getting the Steam API key
-KEY = get_api_key()
 
-
+### RUNNING THE WEBSITE #########
 if __name__ == '__main__':
+    # Getting the Steam API key
+    with open(KEY_FILE, 'r') as f:
+        KEY = f.read()
+
+    # Starting Flask server    
     app.run(debug=True)
