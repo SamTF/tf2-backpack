@@ -22,6 +22,13 @@ UPDATE_PERIOD       = 86400     # 24h in seconds
 
 
 ### FUNCTIONS #########
+def get_api_key() -> str:
+    # Getting the Steam API key
+    with open(KEY_FILE, 'r') as f:
+        key = f.read()
+        print(key)
+        return key
+
 def f(item: dict) -> dict:
     '''
     Takes a TF2 Item Object and extracts only the relevant info. Returns a dict.
@@ -258,12 +265,10 @@ def get_backpack2(steam_URL: str):
     return backpack
 
 
+### READING STEAM API KEY #########
+KEY = get_api_key()
+
 
 ### RUNNING THE WEBSITE #########
-if __name__ == '__main__':
-    # Getting the Steam API key
-    with open(KEY_FILE, 'r') as f:
-        KEY = f.read()
-
-    # Starting Flask server    
+if __name__ == '__main__':   
     app.run(debug=True)
