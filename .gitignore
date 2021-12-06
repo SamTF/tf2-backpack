@@ -5,3 +5,4 @@ svelte-frontend/public/build/
 
 __pycache__/
 *.key
+cache/
