@@ -25,7 +25,7 @@ UPDATE_PERIOD       = 86400     # 24h in seconds
 def get_api_key() -> str:
     # Getting the Steam API key
     with open(KEY_FILE, 'r') as f:
-        key = f.read()
+        key = f.read().rstrip() # have to remove newlines on here but not on my PC? weird...
         print(key)
         return key
 
