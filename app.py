@@ -13,7 +13,7 @@ from web_scaper import get_backpack_value       # My own web-scraping script to 
 URL = 'https://steamcommunity.com/id/{}/inventory/json/440/2'
 URL_STEAM_PROFILE   = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key={}&steamids={}"
 URL_STEAM_ID        = "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={}&vanityurl={}"
-URL_ITEMS           = "https://steamcommunity.com/inventory/{}/440/2"
+URL_ITEMS           = "https://steamcommunity.com/inventory/{}/440/2?count=5000"
 URL_TIME_PLAYED     = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key={}&steamid={}&include_played_free_games=1&appids_filter[0]=440"
 KEY_FILE            = "steam_api.key"
 KEY                 = "XXXXXXXXXXXXX"
@@ -184,7 +184,6 @@ def load_local_data(steamid) -> dict:
         data = json.load(f)
 
         time_diff = datetime.now().timestamp() - data['last_updated']
-        print(time_diff)
 
         if time_diff > UPDATE_PERIOD:
             print("File hasn't been updated in more than 24h hours. Must re-downloaded data.")
