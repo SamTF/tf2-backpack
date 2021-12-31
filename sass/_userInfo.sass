@@ -7,14 +7,56 @@
     // Margin
     margin-bottom: 3rem
 
+    // User Avatar
     img
         border-radius: 15px
     
     div
         align-self: center
     
-    
 
+    // Inventory Value ////
+    #networth
+        cursor: pointer
+        user-select: none
+
+        // Border
+        border: none
+        border-radius: 4px
+        outline-offset: 0px
+
+        // Animation
+        transition: all 100ms
+        
+        // Dotted underline of the value
+        h1
+            text-decoration: underline
+            text-decoration-style: dotted
+            text-decoration-thickness: 2px
+            text-decoration-color: grey
+        
+        
+        // Hovering over this div
+        &:hover
+            // Creating a dashed outline
+            outline: 2px dashed white
+            outline-offset: 8px
+
+            // ACCENTED solid underline
+            h1
+                text-decoration-color: $item-border-colour
+                text-decoration-style: solid
+        
+        // Expand outline and accent value text on click
+        &:active
+            outline-offset: 16px
+
+            h1
+                color: lighten($item-border-colour, 20%)
+
+
+
+    /////////////////////////////////////////
     // !!MOBILE: More width and re-arrange layout
     @include screen-max(940px)
         font-size: $mobile-size             // smaler font size
