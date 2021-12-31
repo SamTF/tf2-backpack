@@ -6,6 +6,7 @@ import hashlib                                  # For getting the Hash256 of an 
 from datetime import datetime                   # Logging the time at which data was fetched
 import os                                       # Checking if file exists on local path
 from typing import Dict, Tuple, List, Union     # Type hinting
+from web_scaper import get_backpack_value       # My own web-scraping script to get the value of a user's backpack
 
 
 ### CONSTANTS #########
@@ -241,6 +242,7 @@ def get_backpack2(steam_URL: str):
         return {'success': False, 'msg': 'User has never played TF2, or profile is private'}
 
     items, item_count   = fetch_items_by_id(steamid)
+    value               = get_backpack_value(steamid)
     hash256             = get_hash(items)
     last_updated        = datetime.now().timestamp()
 
@@ -254,6 +256,7 @@ def get_backpack2(steam_URL: str):
         'last_updated'  : last_updated,
         'item_count'    : item_count,
         'items'         : items,
+        'value'         : value,
         'success'       : True
     }
 
